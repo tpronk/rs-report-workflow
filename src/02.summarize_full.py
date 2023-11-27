@@ -17,37 +17,48 @@ logging.info('*** Initialization')
 
 # Scraped data
 logging.info('Reading 01.scrape.json')
-with open('../rs-report-data/01.scrape.json') as f:
+with open('../rs-report-data/interim/01.scrape.json') as f:
     scrape_data = json.load(f)
 
 # SomefFields
-logging.info('Reading SomefFields.json')
-with open('src/SomefFields.json') as f:
-    SomefFieldsFromSchema = json.load(f)
+logging.info('reading somef_fields.json')
+with open('../rs-report-data/config/somef_fields.json') as f:
+    somef_fields_from_schema = json.load(f)
 
 # Get a list of all the SOMEF variables in the scraped data
 results = []
-SomefFieldsFromData = []
+somef_fields_from_data = []
 for scrape_entry in scrape_data:
     result = {}
-    result['full_name'] = scrape_entry['repo']['full_name']
+    result['label'] = scrape_entry['label']
     for somef_field in scrape_entry['somef'].keys():
         current_data = scrape_entry['somef'][somef_field]
-        if not(somef_field in SomefFieldsFromData):
-            SomefFieldsFromData.append(somef_field)
+        if not(somef_field in somef_fields_from_data):
+            somef_fields_from_data.append(somef_field)
         if (somef_field == 'somef_provenance'):
             for provenance_item in current_data.keys():
                 result[somef_field + '.' + provenance_item] = current_data[provenance_item]
         else:
-            result[somef_field + '.n'] = len(current_data)
-            result[somef_field + '.v'] = values = ", ".join(map(lambda entry: str(entry['result']['value']), current_data))
+            #result['n.' + somef_field] = len(current_data)
+            result[somef_field] = '(' + str(len(current_data)) + ') ' + (", ".join(map(lambda entry: str(entry['result']['value']), current_data)))
     results.append(result)
             
 # Wrap up
-pandas.DataFrame(results).to_csv('../rs-report-data/02.summarize_full.csv')
+pandas.DataFrame(results).to_csv('../rs-report-data/interim/02.summarize_full.wide.csv')
 # Fields existing in schema but not in data
-list(numpy.setdiff1d(list(SomefFieldsFromSchema.keys()), SomefFieldsFromData))
+logging.info('Fields in SOMEF schema but not in data')
+logging.info(list(numpy.setdiff1d(list(somef_fields_from_schema.keys()), somef_fields_from_data)))
 # Fields existing in data but not in schema
-list(numpy.setdiff1d(SomefFieldsFromData, list(SomefFieldsFromSchema.keys())))
+logging.info('Fields in data but not in SOMEF schema')
+logging.info(list(numpy.setdiff1d(somef_fields_from_data, list(somef_fields_from_schema.keys()))))
+# Save as long
+df_wide = pandas.DataFrame(results)
+df_long = pandas.melt(
+    df_wide,
+    id_vars = ['label'], 
+    value_vars = df_wide.columns[1 : len(df_wide.columns)]
+)
+df_long = df_long[[not pandas.isna(elem) for elem in df_long.value]]
+df_long.to_csv('../rs-report-data/interim/02.summarize_full.long.csv')
 
-
+logging.info('Done!')
