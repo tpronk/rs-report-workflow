@@ -19,7 +19,7 @@ logging.info('*** Initialization')
 
 # Input repos
 logging.info('Reading input_repos.json')
-with open('../rs-report-data/config/input_repos.json') as f:
+with open('input_repos.json') as f:
     input_repos = json.load(f)
 
 # Raw data from GitHub repo, GitHub collaborators, and SOMEF
@@ -43,7 +43,7 @@ for input_repo in input_repos:
     })
 
 # Wrap up
-with open('../rs-report-data/interim/01.scrape.json', 'w') as f:
-    json.dump(scrape_data, f)
-logging.info('Stored ../rs-report-data/interim/01.scrape.json')
+with open('01.scrape.json', 'w') as f:
+    json.dump(scrape_data, f, indent = 2)
+logging.info('Stored 01.scrape.json')
 logging.info('Done!')

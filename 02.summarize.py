@@ -9,7 +9,6 @@
 
 # Modules
 import json, logging, pandas, numpy
-from NestedDataParser.core import NestedDataParser 
 
 # Setup logging
 logging.basicConfig(level = logging.INFO)
@@ -17,7 +16,7 @@ logging.info('*** Initialization')
 
 # Scraped data
 logging.info('Reading 01.scrape.json')
-with open('../rs-report-data/interim/01.scrape.json') as f:
+with open('01.scrape.json') as f:
     scrape_data = json.load(f)
 
 # SomefFields
@@ -43,8 +42,7 @@ for scrape_entry in scrape_data:
             result[somef_field] = '(' + str(len(current_data)) + ') ' + (", ".join(map(lambda entry: str(entry['result']['value']), current_data)))
     results.append(result)
             
-# Wrap up
-pandas.DataFrame(results).to_csv('../rs-report-data/interim/02.summarize_full.wide.csv')
+# *** Wrap up
 # Fields existing in schema but not in data
 logging.info('Fields in SOMEF schema but not in data')
 logging.info(list(numpy.setdiff1d(list(somef_fields_from_schema.keys()), somef_fields_from_data)))
@@ -59,6 +57,6 @@ df_long = pandas.melt(
     value_vars = df_wide.columns[1 : len(df_wide.columns)]
 )
 df_long = df_long[[not pandas.isna(elem) for elem in df_long.value]]
-df_long.to_csv('../rs-report-data/interim/02.summarize_full.long.csv')
+df_long.to_csv('02.summarize.csv')
 
 logging.info('Done!')

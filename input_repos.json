@@ -1,0 +1,56 @@
+[
+    {
+        "label": "tanuki", 
+        "url": "https://gitlab.com/hg-aumc/genome-analysis/tanuki",
+        "source": "Roxane Boyer",
+        "notes": "Snakemake workflow in Python for processing RNA sequences"
+    },
+    {
+        "label": "splithalfr_original", 
+        "url": "https://github.com/AmsterdamUMC/splithalfr",
+        "source": "Thomas Pronk",
+        "notes": "Mature R-package for data analysis. Has automated tests, function-level documentation and tutorials in R-formats. Developed and maintained by tpronk"
+    },
+    {
+        "label": "splithalfr_smp", 
+        "url": "https://github.com/AmsterdamUMC/splithalfr/tree/smp-style-readme",
+        "source": "Thomas Pronk",
+        "notes": "Version with SMP-style README. Mature R-package for data analysis. Has automated tests, function-level documentation and tutorials in R-formats. Developed and maintained by tpronk"
+    },
+    {
+        "label": "AmsterdamUMCdb", 
+        "url": "https://github.com/AmsterdamUMC/AmsterdamUMCdb",
+        "source": "Patrich Thoral",
+        "notes": "Mature database. Has extensive documentation. Developed by Patrick Thoral and adopted by PacMed"
+    },
+    {
+        "label": "jsQuestPlus", 
+        "url": "https://github.com/kurokida/jsQuestPlus",
+        "source": "Daiichiro Kuroki & Thomas Pronk",
+        "notes": "Mature JavaScript module for data capture. Has manual tests and tutorials. Developed and maintained by kurokida with support of tpronk."
+    },
+    {
+        "label": "psychojs_testing", 
+        "url": "https://github.com/psychopy/psychojs_testing",
+        "source": "Thomas Pronk",
+        "notes": "Defunct JavaScript framework for automated testing. Has an extensive wiki. Developed by tpronk."
+    },
+    {
+        "label": "deeprank2", 
+        "url": "https://github.com/DeepRank/deeprank2",
+        "source": "Giulia Crocioni",
+        "notes": "Python module with an extensive software management plan. Separate dev documentation is README.dev.md"
+    },
+    {
+        "label": "SOMEF", 
+        "url": "https://github.com/KnowledgeCaptureAndDiscovery/somef",
+        "source": "Daniel Garijo",
+        "notes": "Python application with an extensive software management plan."
+    },
+    {
+        "label": "SOCA", 
+        "url": "https://github.com/oeg-upm/soca",
+        "source": "Daniel Garijo",
+        "notes": "Python + webstack application with an extensive software management plan."
+    }
+]

@@ -1,3 +1,5 @@
 rs-report-workflow.code-workspace
 .venv
 .vscode
+01.scrape.json
+02.summarize.csv
