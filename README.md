@@ -12,3 +12,6 @@ Python 3.9.x
 # How to use
 1. To collect the metadata, run `python 01.scrape.py`. This scrapes the repos defined in `input_repos.json` and saves the output in the file `01.scrape.json`
 2. To summarize the collected metadata, run `python 02.summarize`, which produces the file `02.summarize.csv`
+
+# Acknowledgments
+This workflow was adapted for the maSMP hackathon at [ZB MED](https://www.zbmed.de/en) sponsored by [NFDI4DataScience](https://www.nfdi4datascience.de). NFDI4DataScience is a consortium funded by the German Research Foundation (DFG), project number 460234259.
