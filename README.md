@@ -14,4 +14,4 @@ Python 3.9.x
 2. To summarize the collected metadata, run `python 02.summarize`, which produces the file `02.summarize.csv`
 
 # Acknowledgments
-This workflow was adapted for the maSMP hackathon at [ZB MED](https://www.zbmed.de/en) sponsored by [NFDI4DataScience](https://www.nfdi4datascience.de). NFDI4DataScience is a consortium funded by the German Research Foundation (DFG), project number 460234259.
+This workflow was adapted during the maSMP hackathon at [ZB MED](https://www.zbmed.de/en) sponsored by [NFDI4DataScience](https://www.nfdi4datascience.de). NFDI4DataScience is a consortium funded by the German Research Foundation (DFG), project number 460234259.
